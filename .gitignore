@@ -1,0 +1,24 @@
+# macOS 系统文件
+.DS_Store
+
+# 编辑器临时文件
+*.swp
+*~
+.vscode/
+.idea/
+
+# 测试和草稿
+TESTING_GUIDE.md
+*.draft.md
+.private/
+notes/
+
+# 环境变量和密钥
+.env
+.env.local
+*.token
+
+# 输出和缓存
+*.log
+*.tmp
+__pycache__/
