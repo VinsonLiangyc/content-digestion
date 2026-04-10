@@ -46,43 +46,32 @@
 
 ### 1. 装上这个 Skill
 
-#### 如果你用 Claude.ai (网页版 / 桌面 App)
-
-> ⚠️ 注意：Skill 在 Claude.ai 里**不是**上传到 Project 的 Files 或 Instructions 里。它是一个**全局功能**，装一次之后所有对话和 Project 都能用。
-
-**详细步骤：**
-
-1. **先确认 Code Execution 已开启**
-   - 进入 `Settings → Capabilities`
-   - 找到 "Code execution and file creation" 这一项，确保是开启状态
-   - 这是 Skills 功能的前置条件，没开 Skills 不会工作
-
-2. **打包 Skill 文件夹**
-   - 你下载的 `content-digestion/` 文件夹**整体**打包成一个 ZIP 文件（不是只把里面的 SKILL.md 拿出来打包）
-   - Mac 用户：右键文件夹 → 压缩
-   - Windows 用户：右键文件夹 → 发送到 → 压缩文件夹
-   - 重要：ZIP 解压后的最外层应该是 `content-digestion/` 文件夹本身，里面才是 SKILL.md。如果你看到的是直接展开的文件，就打包错了
-
-3. **上传到 Claude.ai**
-   - 进入 `Settings → Customize → Skills`（或者 `Customize → Skills`，取决于你的 plan）
-   - 点击 "+" 按钮 → 选择 "Create skill" 或 "Upload skill"
-   - 上传你打包好的 ZIP 文件
-   - 上传成功后，Skill 会出现在你的 Skills 列表里，确保它处于**开启状态**（toggle on）
-
-4. **验证安装**
-   - 在任意对话里粘贴一段文字稿，说"帮我消化一下这份内容"
-   - 如果 Claude 反问你要"沉淀模式"还是"发布模式/读完"，说明 Skill 装好了
-   - 如果 Claude 直接开始用通用方式总结，说明 Skill 没生效，回去检查上面三步
-
-#### 如果你用 Claude Code CLI
+#### 方法一：一键安装（推荐）
 
 ```bash
-# 把整个文件夹复制到全局 skills 目录
-mkdir -p ~/.claude/skills/content-digestion
-cp SKILL.md ~/.claude/skills/content-digestion/
+npx skills add VinsonLiangyc/content-digestion
 ```
 
-Claude Code 会自动发现 `~/.claude/skills/` 下的所有 skill，无需重启。
+一行命令自动装到你当前在用的 agent（Claude Code / Cursor / Codex 等）的 skills 目录。
+
+#### 方法二：Git 克隆
+
+```bash
+# 克隆到 Claude Code 的 skills 目录
+git clone https://github.com/VinsonLiangyc/content-digestion.git ~/.claude/skills/content-digestion
+```
+
+#### 方法三：Claude.ai 网页上传
+
+如果你用的是 Claude.ai 网页版或桌面 App（没有 Claude Code CLI）：
+
+1. 确认 Code Execution 已开启（`Settings → Capabilities`）
+2. 下载这个 repo 的 ZIP（页面右上角绿色 Code 按钮 → Download ZIP）
+3. 在 `Settings → Customize → Skills` 点 "+" 上传 ZIP
+
+#### 验证安装
+
+在任意对话里粘贴一段文字稿，说「帮我消化一下这份内容」。如果 Claude 反问你要「沉淀模式」还是「发布模式」，说明装好了。
 
 ### 2. 给 Claude 一份内容
 
