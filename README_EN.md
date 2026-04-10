@@ -46,42 +46,32 @@ Both uses share the same output format: a magazine-style long-form note, organiz
 
 ### 1. Install
 
-#### If you use Claude.ai (web / desktop app)
-
-> ⚠️ Note: Skills in Claude.ai are **not** uploaded into a Project's Files or Instructions. They're a **global feature** — install once and they work across all your conversations and Projects.
-
-**Step by step:**
-
-1. **Make sure Code Execution is enabled**
-   - Go to `Settings → Capabilities`
-   - Find "Code execution and file creation" and ensure it's toggled on
-   - This is a prerequisite — without it, Skills won't work
-
-2. **Package the Skill folder as a ZIP**
-   - Take the entire `content-digestion/` folder (the one you downloaded) and zip it up — don't just zip the SKILL.md file alone
-   - Mac: right-click the folder → Compress
-   - Windows: right-click the folder → Send to → Compressed (zipped) folder
-   - Important: when unzipped, the top-level should be the `content-digestion/` folder itself, with SKILL.md inside it. If unzipping shows files directly without a parent folder, you've zipped it wrong
-
-3. **Upload to Claude.ai**
-   - Go to `Settings → Customize → Skills` (or `Customize → Skills`, depending on your plan)
-   - Click the "+" button → choose "Create skill" or "Upload skill"
-   - Upload your ZIP file
-   - Once uploaded, the Skill will appear in your Skills list. Make sure it's **toggled on**
-
-4. **Verify the install**
-   - In any conversation, paste a piece of text and say "help me digest this"
-   - If Claude asks whether you want "Knowledge mode" or "Publishing mode / read-it-fast", the Skill is working
-   - If Claude just summarizes generically, the Skill didn't kick in — go back and check the steps above
-
-#### If you use Claude Code CLI
+#### Option 1: One-line install (recommended)
 
 ```bash
-mkdir -p ~/.claude/skills/content-digestion
-cp SKILL.md ~/.claude/skills/content-digestion/
+npx skills add VinsonLiangyc/content-digestion
 ```
 
-Claude Code will auto-discover all skills under `~/.claude/skills/` — no restart needed.
+Auto-installs to your current agent's skills directory (Claude Code / Cursor / Codex / 40+ others).
+
+#### Option 2: Git clone
+
+```bash
+# Clone into Claude Code's skills directory
+git clone https://github.com/VinsonLiangyc/content-digestion.git ~/.claude/skills/content-digestion
+```
+
+#### Option 3: Claude.ai web upload
+
+If you're using Claude.ai web or desktop app (no CLI):
+
+1. Enable Code Execution (`Settings → Capabilities`)
+2. Download this repo as ZIP (green Code button → Download ZIP)
+3. Upload the ZIP at `Settings → Customize → Skills`
+
+#### Verify
+
+Paste any text into a conversation and say "help me digest this." If Claude asks whether you want Knowledge Mode or Publishing Mode, you're set.
 
 ### 2. Hand Claude some content
 
